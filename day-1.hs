@@ -6,6 +6,7 @@
 
 double x = x + x
 
+to_even :: Integral a => a -> a
 to_even n = (if (mod n 2) == 0 then n else n + 1) 
 
 -- in haskell everything is an expression. 
