@@ -3,7 +3,8 @@ learning haskell 30 minutes a day for 64 days.
 
 learning goals:
 - haskell syntax and language features
-- composing with recursion for control flow and immutable lists
+- composing with recursion for control flow
+- immutable lists
 
 
 learning resources:
