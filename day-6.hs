@@ -51,10 +51,33 @@ module Day6 where
         | otherwise = []
 
     permute [] = [[]]
+
+    --note: because of a:b is a cons operation
+    --b has to be of a [a] type, a list. 
     permute rest = [a:b | a <- rest, b <- permute (removeFirst a rest)]
-        where removeFirst a [] = []
+        where removeFirst _a [] = []
             -- if the  first and second matches, subsitute removeFirst
             -- with remaidner of list
               removeFirst a (b:bs) 
                 | a == b = bs 
                 | otherwise = b : removeFirst a bs
+
+    
+    --this is the only way to maintain a separate type for a codomain..
+    apply_to :: (a -> [b]) -> [a] -> [(a, b)]
+    apply_to _fn [] = []
+    apply_to fn values = [(a,b)| a <- values, b <- fn a]
+
+    apply_to' :: (a -> [a]) -> [a] -> [(a, a)]
+    apply_to' _fn [] = []
+    apply_to' fn values = [(a,b)| a <- values, b <- fn a]
+    
+    apfn = apply_to' (\a -> [a + 2]) [5,4,3,2]
+
+    data CoordType = Coord3d Float Float Float deriving Show
+
+    coord_origin = Coord3d 0.0 0.0 0.0
+
+    coordX (Coord3d x _ _) = x
+    coordY (Coord3d _ y _) = y
+    coordZ (Coord3d _ _ z) = z
