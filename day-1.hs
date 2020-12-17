@@ -33,4 +33,4 @@ filter'512 list = [x | x <- list, x `mod` 512 /= 0]
 
 --a more complete example of list comprehesion. 
 right_tr_perimeter_solver :: (Num c, Eq c, Enum c) => c -> [(c, c, c)]
-right_tr_perimeter_solver p  = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == p]
+right_tr_perimeter_solver p  = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == p] -- for a solver it literally iterates through everything.
